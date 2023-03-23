@@ -32,6 +32,26 @@ namespace MarsPlateauRobot
             y = 1;
         }
 
+        internal void NavigateRobot(string Nav_Instruction)
+        {
+            foreach(char direction in Nav_Instruction)
+            {
+                if (Char.ToLower(direction) == 'l')
+                {
+                    GoLeft();
+                }
+                else if (Char.ToLower(direction) == 'r')
+                {
+                    GoRight();
+                }
+                else
+                {
+                    GoForward();
+                }
+            }
+        }
+
+
 
         internal void GoRight()
         {
@@ -76,17 +96,20 @@ namespace MarsPlateauRobot
             switch (Direction)
             {
                 case Directions.East:
-                    if(x < xLimit)  x++;
+                    if (x < xLimit)
+                        x ++;
                     break;
                 case Directions.West:
-                    if (x < xLimit) x--;
+                    if (x > 1)
+                        x--;
                     break;
                 case Directions.North:
                     if (y < yLimit) y++;
                     break;
                 case Directions.South:
-                    if (y < yLimit) y++;
+                    if (y > 1) y--;
                     break;
+                
             }
         }
     }
