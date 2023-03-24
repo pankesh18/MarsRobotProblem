@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace MarsPlateauRobot
 {
-    internal class MarsRobot
+    public class MarsRobot
     {
         public enum Directions
         {
@@ -15,24 +15,34 @@ namespace MarsPlateauRobot
             East,
             West
         }
-        internal Directions Direction { get; private set; }
-        internal int xLimit { get; private set; }
-        internal int yLimit { get; private set; }
-        internal int x { get; private set; }
-        internal int y { get; private set; }
+        public Directions Direction { get; private set; }
+        public int xLimit { get; private set; }
+        public int yLimit { get; private set; }
+        public int x { get; private set; }
+        public int y { get; private set; }
      
         
 
-        public MarsRobot(Directions init_Direction, int init_XLimit, int init_YLimit)
+        public MarsRobot(Directions init_Direction, string GridSize)
         {
             Direction=init_Direction;
-            xLimit=init_XLimit;
-            yLimit= init_YLimit;
+            xLimit = Convert.ToInt32(GridSize.Split("x")[0]);
+            yLimit = Convert.ToInt32(GridSize.Split("x")[1]);
             x = 1;
             y = 1;
         }
 
-        internal void NavigateRobot(string Nav_Instruction)
+        public override string ToString()
+        {
+            return x.ToString() + "," + y.ToString() + "," + Direction.ToString();
+        }
+
+
+
+
+
+
+        public void NavigateRobot(string Nav_Instruction)
         {
             foreach(char direction in Nav_Instruction)
             {
@@ -53,7 +63,7 @@ namespace MarsPlateauRobot
 
 
 
-        internal void GoRight()
+        public void GoRight()
         {
             switch (Direction)
             {
@@ -72,7 +82,7 @@ namespace MarsPlateauRobot
             }
         }
 
-        internal void GoLeft()
+        public void GoLeft()
         {
             switch (Direction)
             {
@@ -91,7 +101,7 @@ namespace MarsPlateauRobot
             }
         }
 
-        internal void GoForward()
+        public void GoForward()
         {
             switch (Direction)
             {
@@ -112,5 +122,6 @@ namespace MarsPlateauRobot
                 
             }
         }
+
     }
 }
