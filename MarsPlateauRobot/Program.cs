@@ -4,24 +4,18 @@
     {
         public static void Main(string[] args)
         {
-            string GridSize;
-            string Nav_Intruct;
+            //Input Plateau size
             Console.WriteLine("Enter grid size of the Mars Plateau (Example 3x3):");
-            GridSize= Console.ReadLine();
+            string GridSize = Console.ReadLine();
 
-            
-
+            //Create Mars robot
             MarsRobot MR = new MarsRobot(MarsRobot.Directions.North, GridSize);
 
-
-            Console.WriteLine("Enter nagigation instructions (Example RLRLFL)");
-           
-
+            //Input robot navigation instrcutions and move robot
+            Console.WriteLine("Enter navigation instructions (Example RLRLFL)");
             MR.NavigateRobot(Console.ReadLine());
 
-
-            // Console.WriteLine(MR.x.ToString() + "," + MR.y.ToString() + "," + MR.Direction.ToString());
-
+            // Print Robot Position
             Console.WriteLine(MR.ToString());
         }   
     }

@@ -8,6 +8,10 @@ namespace MarsPlateauRobot
 {
     public class MarsRobot
     {
+        #region Direction Enum
+        /// <summary>
+        /// Enum of Directions
+        /// </summary>
         public enum Directions
         {
             North,
@@ -15,14 +19,23 @@ namespace MarsPlateauRobot
             East,
             West
         }
+        #endregion
+
+        #region Class properties
         public Directions Direction { get; private set; }
         public int xLimit { get; private set; }
         public int yLimit { get; private set; }
         public int x { get; private set; }
         public int y { get; private set; }
-     
-        
 
+        #endregion
+
+        #region Constructor
+        /// <summary>
+        /// Constructor to initialize the mars robot
+        /// </summary>
+        /// <param name="init_Direction"></param>
+        /// <param name="GridSize"></param>
         public MarsRobot(Directions init_Direction, string GridSize)
         {
             Direction=init_Direction;
@@ -31,17 +44,25 @@ namespace MarsPlateauRobot
             x = 1;
             y = 1;
         }
+        #endregion
 
+        #region ToString
+        /// <summary>
+        /// Override of ToString of the class to display position
+        /// </summary>
+        /// <returns></returns>
         public override string ToString()
         {
             return x.ToString() + "," + y.ToString() + "," + Direction.ToString();
         }
+        #endregion
 
+        #region Robot functions
 
-
-
-
-
+        /// <summary>
+        /// Method to navigate the robot taking each instructions
+        /// </summary>
+        /// <param name="Nav_Instruction"></param>
         public void NavigateRobot(string Nav_Instruction)
         {
             foreach(char direction in Nav_Instruction)
@@ -61,8 +82,9 @@ namespace MarsPlateauRobot
             }
         }
 
-
-
+        /// <summary>
+        /// Method to Move Robot to right
+        /// </summary>
         public void GoRight()
         {
             switch (Direction)
@@ -82,6 +104,9 @@ namespace MarsPlateauRobot
             }
         }
 
+        /// <summary>
+        /// Method to move robot to left
+        /// </summary>
         public void GoLeft()
         {
             switch (Direction)
@@ -101,6 +126,9 @@ namespace MarsPlateauRobot
             }
         }
 
+        /// <summary>
+        /// Method to move robot forward to facing direction
+        /// </summary>
         public void GoForward()
         {
             switch (Direction)
@@ -123,5 +151,6 @@ namespace MarsPlateauRobot
             }
         }
 
+        #endregion
     }
 }
