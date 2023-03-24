@@ -65,20 +65,27 @@ namespace MarsPlateauRobot
         /// <param name="Nav_Instruction"></param>
         public void NavigateRobot(string Nav_Instruction)
         {
-            foreach(char direction in Nav_Instruction)
+            try
             {
-                if (Char.ToLower(direction) == 'l')
+                foreach (char direction in Nav_Instruction)
                 {
-                    GoLeft();
+                    if (Char.ToLower(direction) == 'l')
+                    {
+                        GoLeft();
+                    }
+                    else if (Char.ToLower(direction) == 'r')
+                    {
+                        GoRight();
+                    }
+                    else
+                    {
+                        GoForward();
+                    }
                 }
-                else if (Char.ToLower(direction) == 'r')
-                {
-                    GoRight();
-                }
-                else
-                {
-                    GoForward();
-                }
+            }
+            catch (Exception ex)
+            {
+                throw;
             }
         }
 
@@ -87,20 +94,27 @@ namespace MarsPlateauRobot
         /// </summary>
         public void GoRight()
         {
-            switch (Direction)
+            try
             {
-                case Directions.North:
-                    Direction = Directions.East;
-                    break;
-                case Directions.South:
-                    Direction = Directions.West;
-                    break;
-                case Directions.East:
-                    Direction = Directions.South;
-                    break;
-                case Directions.West:
-                    Direction = Directions.North;
-                    break;
+                switch (Direction)
+                {
+                    case Directions.North:
+                        Direction = Directions.East;
+                        break;
+                    case Directions.South:
+                        Direction = Directions.West;
+                        break;
+                    case Directions.East:
+                        Direction = Directions.South;
+                        break;
+                    case Directions.West:
+                        Direction = Directions.North;
+                        break;
+                }
+            }
+            catch (Exception ex)
+            {
+                throw;
             }
         }
 
@@ -109,20 +123,27 @@ namespace MarsPlateauRobot
         /// </summary>
         public void GoLeft()
         {
-            switch (Direction)
+            try
             {
-                case Directions.North:
-                    Direction = Directions.West;
-                    break;
-                case Directions.South:
-                    Direction = Directions.East;
-                    break;
-                case Directions.East:
-                    Direction = Directions.North;
-                    break;
-                case Directions.West:
-                    Direction = Directions.South;
-                    break;
+                switch (Direction)
+                {
+                    case Directions.North:
+                        Direction = Directions.West;
+                        break;
+                    case Directions.South:
+                        Direction = Directions.East;
+                        break;
+                    case Directions.East:
+                        Direction = Directions.North;
+                        break;
+                    case Directions.West:
+                        Direction = Directions.South;
+                        break;
+                }
+            }
+            catch (Exception ex)
+            {
+                throw;
             }
         }
 
@@ -131,23 +152,30 @@ namespace MarsPlateauRobot
         /// </summary>
         public void GoForward()
         {
-            switch (Direction)
+            try
             {
-                case Directions.East:
-                    if (x < xLimit)
-                        x ++;
-                    break;
-                case Directions.West:
-                    if (x > 1)
-                        x--;
-                    break;
-                case Directions.North:
-                    if (y < yLimit) y++;
-                    break;
-                case Directions.South:
-                    if (y > 1) y--;
-                    break;
-                
+                switch (Direction)
+                {
+                    case Directions.East:
+                        if (x < xLimit)
+                            x++;
+                        break;
+                    case Directions.West:
+                        if (x > 1)
+                            x--;
+                        break;
+                    case Directions.North:
+                        if (y < yLimit) y++;
+                        break;
+                    case Directions.South:
+                        if (y > 1) y--;
+                        break;
+
+                }
+            }
+            catch(Exception ex)
+            {
+                throw;
             }
         }
 
